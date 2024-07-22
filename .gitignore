@@ -6,6 +6,7 @@ build/
 bin/
 dist/
 screenshots/
+fixtures/
 
 # Generated files
 1-getting-started/

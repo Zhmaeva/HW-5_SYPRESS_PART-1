@@ -4,7 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress": "npm exec cypress open"
+    "cypress": "npm exec cypress open",
+    "cypress:chrome": "npx cypress run --browser chrome --config viewportWidth=1280,viewportHeight=720",
+    "chrome:headless": "npx cypress run --browser chrome --headless",
+    "cypress:electron": "npx cypress run --headed --config viewportWidth=320,viewportHeight=480",
+    "electron:headless": "npx cypress run --headless",
+    "cypress:edge": "npx cypress run --browser edge --headed --config viewportWidth=768,viewportHeight=1024",
+    "edge:headless": "npx cypress run --browser edge --headless",
+    "cypress:firefox": "npx cypress run --browser firefox --headed --config viewportWidth=768,viewportHeight=1024",
+    "firefox:headless": "npx cypress run --browser firefox --headless"
   },
   "keywords": [],
   "author": "zhmaeva",
