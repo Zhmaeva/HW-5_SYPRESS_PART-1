@@ -5,9 +5,17 @@ const description = faker.commerce.productDescription();
 const author = faker.person.fullName();
 
 describe('Авторизация в библиотеке, тесты', () => {
+  const viewports = [
+    {width: 1280, height: 720}, // desktop
+    {width: 320, height: 480}, //mobile portrait
+    {width: 768, height: 1024} // tablet
+  ]
     beforeEach(() => {
-      cy.visit('/');
-      cy.contains('Log in').click();
+      viewports.forEach((views) => {
+        cy.viewport(views.width, views.height);
+        cy.visit('/');
+        cy.contains('Log in').click();
+      });
     });
 
     it('Логин', () => {
@@ -34,10 +42,12 @@ describe('Авторизация в библиотеке, тесты', () => {
 
 describe('Избранные книги, тесты', () => {  
     beforeEach(() => {
+      if(Cypress.isBrowser(['chrome', 'electron', 'firefox', 'edge'])) {
         cy.visit('/');
         cy.contains('Log in').click();
         cy.login('bropet@mail.ru', '123');
-      });    
+      }    
+    });    
 
     it('Тест, добавление новой книги', () => {
         cy.addBook(title, description, author);
